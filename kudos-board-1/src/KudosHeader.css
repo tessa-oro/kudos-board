@@ -1,0 +1,11 @@
+h1 {
+    font-size: 4em;
+    background: linear-gradient(to right, #ff00b7, #ff9eda);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-emphasis-color: transparent;
+    padding: 5px;
+    text-align: center;
+    text-shadow: rgb(255, 191, 230) 1px 0 10px;
+}

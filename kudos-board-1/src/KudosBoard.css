@@ -1,0 +1,17 @@
+#cardSection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+#kudosCover {
+    display: flex;
+}
+
+#kudos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
