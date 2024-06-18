@@ -1,7 +1,7 @@
 import React from 'react';
 import "./ButtonSection.css"
 
-function ButtonSection() {
+function ButtonSection({openCreate}) {
     return (
         <div>
             <div id="searchSection">
@@ -10,18 +10,23 @@ function ButtonSection() {
                         <button id='searchGo'>Go</button>
                 </form>
             </div>
-            <div id="sortSection">
-                <div id="sortBox">
-                    <label id="sortLabel">View:</label>
-                    <select name="sort" id="sortOption">
-                        <option value="all">All</option>
-                        <option value="recent">Recent</option>
-                        <option value="celebration">Celebration</option>
-                        <option value="thankYou">Thank You</option>
-                        <option value="inspiration">Inspiration</option>
-                    </select>
-                </div>
-            </div>
+            <span>
+                <span id="sortSection">
+                    <div id="sortBox">
+                        <label id="sortLabel">View:</label>
+                        <select name="sort" id="sortOption">
+                            <option value="all">All</option>
+                            <option value="recent">Recent</option>
+                            <option value="celebration">Celebration</option>
+                            <option value="thankYou">Thank You</option>
+                            <option value="inspiration">Inspiration</option>
+                        </select>
+                    </div>
+                </span>
+                <span id="createNewSection">
+                    <button id='createNew' onClick={openCreate}>Create a New Board</button>
+                </span>
+            </span>
         </div>
     );
 }
