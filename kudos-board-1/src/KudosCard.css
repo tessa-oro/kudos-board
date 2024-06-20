@@ -24,3 +24,18 @@
     margin-top: 30px;
     border-radius: 8px;
 }
+
+#cardTitle {
+    margin-top: 5px;
+    padding: 0px;
+    margin: 0px;
+    color: rgb(170, 0, 71);
+    font-weight: 500;
+}
+
+#category {
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 10px;
+    color: rgb(170, 0, 71);
+}

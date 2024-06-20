@@ -45,7 +45,7 @@
 }
 
 #searchGo:hover {
-    background-color: #ffedfa; /* Light gray color */
+    background-color: #ffedfa; 
     box-shadow: inset 0 0 5px rgba(181, 0, 87, 0.2);
 }
 
@@ -84,6 +84,11 @@
 #createNewSection {
     padding: 0px;
     margin-top: 30px;
+}
+
+#createNew:hover {
+    background-color: #ffedfa; 
+    box-shadow: inset 0 0 5px rgba(181, 0, 87, 0.2);
 }
 
 span {

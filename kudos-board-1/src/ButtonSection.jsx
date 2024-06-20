@@ -1,7 +1,7 @@
 import React from 'react';
 import "./ButtonSection.css"
 
-function ButtonSection({openCreate}) {
+function ButtonSection( {openCreate} ) {
     return (
         <div>
             <div id="searchSection">
