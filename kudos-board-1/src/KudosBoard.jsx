@@ -7,24 +7,44 @@ import Modal from "./Modal";
 
 function KudosBoard() {
     const [showModal, setShowModal] = useState(false);
-    const [kudoBoards, setKudoBoards] = useState([]);
+    const [kudoCards, setKudoCards] = useState([]);
     const [randImg, setRandImg] = useState(1);
+
+    useEffect(() => {
+        fetchCards();
+    }, []);
+
+    const fetchCards = () => {
+        fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosCards`)
+        .then(response => {
+             if (!response.ok) {
+                 throw new Error(`HTTP error! status: ${response.status}`);
+             } else {
+                return response.json();
+              } 
+        })
+        .then(data => {
+            console.log(data);
+            setKudoCards(data);
+        })
+        .catch(error => {
+            console.error('Error fetching boards', error);
+        });
+    };
 
     const changeModalDisplay = () => {
         setShowModal(!showModal);
     }
 
-    const createCard = (formInput) => {
-        console.log("creating");
-        let card = new Map();
-        setRandImg(randImg + 1);
-        card.set('title', formInput.target.title.value);
-        card.set('category', formInput.target.category.value);
-        setKudoBoards(...kudoBoards, card);
-        console.log(card);
-    }
-
-    console.log(kudoBoards);
+    // const createCard = (formInput) => {
+    //     console.log("creating");
+    //     let card = new Map();
+    //     setRandImg(randImg + 1);
+    //     card.set('title', formInput.target.title.value);
+    //     card.set('category', formInput.target.category.value);
+    //     setKudoBoards(...kudoBoards, card);
+    //     console.log(card);
+    // }
 
     return (
         <div>
@@ -35,16 +55,9 @@ function KudosBoard() {
             }
             <div id="kudos">
                 <div id="cardSection">
-                    <KudosCard num="1"/>
-                    <KudosCard num="2" title="title" category="category"/>
-                    <KudosCard />
-                    <KudosCard />
-                    <KudosCard />
-                    <KudosCard />
-                    {kudoBoards.forEach((card) => {
-                        <KudosCard title={card.title} num={randImg} category={card.category} />
-                    })
-                    }
+                    {kudoCards.map(card => (
+                        <KudosCard title={card.title} category={card.category} num={card.id}/>)
+                    )}
                 </div>
             </div>
         </div>

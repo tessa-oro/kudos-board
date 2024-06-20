@@ -1,7 +1,7 @@
 import "./KudosCard.css";
 import React from "react";
 
-const KudosCard = ({title, category, num, goToKudos}) => {
+const KudosCard = ({title, category, num, goToPosts}) => {
 
     return (
         <div id="kudosCard" >
@@ -12,7 +12,7 @@ const KudosCard = ({title, category, num, goToKudos}) => {
             </div>
             <span>
                 <span id="viewBoardBox">
-                    <button id="viewBoard" onClick={goToKudos}>view board</button>
+                    <button id="viewBoard" onClick={goToPosts}>view board</button>
                 </span>
                 <span>
                     <button id="delete">delete</button>
