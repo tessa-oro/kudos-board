@@ -65,6 +65,30 @@ function KudosBoard() {
         });
     }
 
+    // const deleteThisCard = (num) => {
+    //     fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosCards/${num}`,
+    //         {
+    //             method: "DELETE",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //         }
+    //     )
+    //     .then(response => {
+    //          if (!response.ok) {
+    //              throw new Error(`HTTP error! status: ${response.status}`);
+    //          } else {
+    //             return response.json();
+    //           } 
+    //     })
+    //     .then(data => {
+    //         fetchCards();
+    //     })
+    //     .catch(error => {
+    //         console.error('Error fetching boards', error);
+    //     });
+    //  }
+
     return (
         <div>
             <ButtonSection openCreate={() => changeModalDisplay()}/>
@@ -75,7 +99,8 @@ function KudosBoard() {
             <div id="kudos">
                 <div id="cardSection">
                     {kudoCards.map(card => (
-                        <KudosCard title={card.title} category={card.category} num={card.id}/>)
+                        <KudosCard title={card.title} category={card.category} num={card.id} 
+                        /*{ deleteCard={(num) => deleteThisCard(num)} } *//>)
                     )}
                 </div>
             </div>

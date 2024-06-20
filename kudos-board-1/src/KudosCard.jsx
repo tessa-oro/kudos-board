@@ -1,7 +1,8 @@
 import "./KudosCard.css";
 import React from "react";
+import { Link } from 'react-router-dom';
 
-const KudosCard = ({title, category, num, goToPosts}) => {
+const KudosCard = ({title, category, num, deleteCard}) => {
 
     return (
         <div id="kudosCard" >
@@ -12,10 +13,12 @@ const KudosCard = ({title, category, num, goToPosts}) => {
             </div>
             <span>
                 <span id="viewBoardBox">
-                    <button id="viewBoard" onClick={goToPosts}>view board</button>
+                    <Link to="/posts">
+                        <button id="viewBoard">view more</button>
+                    </Link>
                 </span>
                 <span>
-                    <button id="delete">delete</button>
+                    <button id="delete" onClick={deleteCard}>delete</button>
                 </span>
             </span>
         </div>
