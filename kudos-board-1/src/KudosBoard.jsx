@@ -30,21 +30,40 @@ function KudosBoard() {
         .catch(error => {
             console.error('Error fetching boards', error);
         });
-    };
+    }
 
     const changeModalDisplay = () => {
         setShowModal(!showModal);
     }
 
-    // const createCard = (formInput) => {
-    //     console.log("creating");
-    //     let card = new Map();
-    //     setRandImg(randImg + 1);
-    //     card.set('title', formInput.target.title.value);
-    //     card.set('category', formInput.target.category.value);
-    //     setKudoBoards(...kudoBoards, card);
-    //     console.log(card);
-    // }
+    const createCard = (formInput) => {
+        fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosCards`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    title: `${formInput.target.elements.title.value}`,
+	                category: `${formInput.target.elements.category.value}`,
+	                author: `${formInput.target.elements.author.value}`
+                })
+            }
+        )
+        .then(response => {
+             if (!response.ok) {
+                 throw new Error(`HTTP error! status: ${response.status}`);
+             } else {
+                return response.json();
+              } 
+        })
+        .then(data => {
+            fetchCards();
+        })
+        .catch(error => {
+            console.error('Error fetching boards', error);
+        });
+    }
 
     return (
         <div>
