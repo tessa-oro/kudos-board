@@ -70,6 +70,30 @@ const PostPage = ({ cardId }) => {
         changeModalDisplay();
     }
 
+    const deleteThisPost = (num) => {
+        fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosPosts/${num}/delete`,
+            {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        )
+        .then(response => {
+             if (!response.ok) {
+                 throw new Error(`HTTP error! status: ${response.status}`);
+             } else {
+                return response.json();
+              } 
+        })
+        .then(data => {
+            fetchPosts();
+        })
+        .catch(error => {
+            console.error('Error fetching post', error);
+        });
+    }
+
     return (
         <div id="postPage" >
             <p>Posts</p>
@@ -83,7 +107,7 @@ const PostPage = ({ cardId }) => {
                     {kudoPosts.map(post => (
                         <Post message={post.message} author={post.author} votes={post.votes}
                         card={post.cardId} title={post.title}
-                        /*{ deleteCard={(num) => deleteThisCard(num)} } *//>)
+                        deleteCard={() => deleteThisPost(post.id)} />)
                     )}
                 </div>
             </div>

@@ -94,6 +94,35 @@ function KudosBoard( {passCardId} ) {
         }
     }
 
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const searchingFor = e.target.value;
+        console.log(searchingFor);
+        if (searchingFor === "") {
+            fetchCards();
+        } else {
+            fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosCards/search/${searchingFor}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                } else {
+                    return response.json();
+                } 
+            })
+            .then(data => {
+                console.log(data);
+                setKudoCards(data);
+            })
+            .catch(error => {
+                console.error('Error fetching boards', error);
+            });
+        }
+    }
+
+    const clearSearch = () => {
+        fetchCards();
+    }
+
     const deleteThisCard = (num) => {
         fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosCards/${num}/delete`,
             {
@@ -116,11 +145,12 @@ function KudosBoard( {passCardId} ) {
         .catch(error => {
             console.error('Error fetching boards', error);
         });
-     }
+    }
 
     return (
         <div>
-            <ButtonSection openCreate={() => changeModalDisplay()} handleSort={handleSort}/>
+            <ButtonSection openCreate={() => changeModalDisplay()} handleSort={handleSort} handleSearch={handleSearch}
+            clearSearch={clearSearch}/>
             { showModal ? (
                 <Modal closeModal={() => changeModalDisplay()} createBoard={(formInput) => createCard(formInput)}/>
             ) : (<></>)

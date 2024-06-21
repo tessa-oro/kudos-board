@@ -1,13 +1,13 @@
 import React from 'react';
 import "./ButtonSection.css"
 
-function ButtonSection( {openCreate, handleSort} ) {
+function ButtonSection( {openCreate, handleSort, handleSearch, clearSearch} ) {
     return (
         <div>
             <div id="searchSection">
-                <form id="searchContainer" onSubmit={(e) => { handleSearch(e) }}>
-                        <input id='searchBar' input='text' name='kudosSearch' placeholder='search'></input>
-                        <button id='searchGo'>Go</button>
+                <form id="searchContainer" >
+                        <input id='searchBar' onChange={(e) => { handleSearch(e) }} input='text' name='kudosSearch' placeholder='search'></input>
+                        <button id='searchClear' onClick={clearSearch}>clear</button>
                 </form>
             </div>
             <span>
@@ -31,4 +31,5 @@ function ButtonSection( {openCreate, handleSort} ) {
     );
 }
 
+//onSubmit={(e) => { handleSearch(e) }}  
 export default ButtonSection;
