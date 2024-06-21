@@ -38,12 +38,15 @@ const PostPage = ({ cardId }) => {
 
     const createPost = async (formInput) => {
         formInput.preventDefault();
+        console.log(formInput.target.elements.title.value)
+        console.log(formInput.target.elements.message.value);
+        console.log(formInput.target.elements.author.value);
+        console.log(formInput.target.elements.pickedURL.value);
         const formData = {
             title: `${formInput.target.elements.title.value}`,
             message: `${formInput.target.elements.message.value}`,
             author: `${formInput.target.elements.author.value}`,
-            votes: "0",
-            gif: "random"
+            gif: `${formInput.target.elements.pickedURL.value}`
         };
         fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosPosts/${cardId}/create`,
             {
@@ -127,14 +130,14 @@ const PostPage = ({ cardId }) => {
             </Link>
             <button onClick={() => changeModalDisplay()}>create post</button>
             { showModal ? (
-                <PostModal closeModal={() => changeModalDisplay()} createPost={(formInput) => createPost(formInput)} />
+                <PostModal closeModal={() => changeModalDisplay()} createPost={(e) => createPost(e)} />
             ) : (<></>)
             }
             <div id="posts">
                 <div id="postSection">
                     {kudoPosts.map(post => (
                         <Post message={post.message} author={post.author} votes={post.votes}
-                        card={post.cardId} title={post.title}
+                        card={post.cardId} title={post.title} gif={post.gif}
                         deleteCard={() => deleteThisPost(post.id)}
                         upVote={() => upVote(post.id)} />)
                     )}

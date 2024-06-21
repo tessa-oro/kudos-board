@@ -27,11 +27,13 @@ const PostModal = ({ closeModal, createPost }) => {
         setSearchGIF(e.target.value);
     }
 
-    const goSearch = () => {
+    const goSearch = (e) => {
+        e.preventDefault();
         fetchSearch();
     }
 
-    const selectGIF = (selectedURL) => {
+    const selectGIF = (e, selectedURL) => {
+        e.preventDefault();
         setPickedURL(selectedURL);
     }
 
@@ -47,23 +49,24 @@ const PostModal = ({ closeModal, createPost }) => {
                         </div>
                         <div id="message"> 
                             <label>Card description:</label>
-                            <input id="message" name="message"></input>
+                            <input id="message" name="message" required></input>
                         </div>
                         <div id="gifSearch" onSubmit={(e) => goSearch(e)}>
                             <label>Search GIFS:</label>
                             <input type="text" id="searchFor" name="searchFor"
                             onChange={handleSearch} value={searchGIF}></input>
-                            <button onClick={goSearch}>search</button>
+                            <button onClick={(e) => goSearch(e)}>search</button>
                         </div>
                         <div id="gifOptions">
                             <div>
                                 {gifOptions.map((gOption, index) => (
                                     <img id="gif" alt="GIF" src={gOption.images.fixed_height.url}
-                                    loading="lazy" onClick={() => selectGIF(gOption.images.fixed_height.url)}/>)                          
+                                    loading="lazy" onClick={(e) => selectGIF(e, gOption.images.fixed_height.url)}/>)                          
                                  )}
                             </div>
                             <div>
                                 <p>{pickedURL}</p>
+                                <input type="hidden" id="pickedURL" name="pickedURL" value={pickedURL}></input>
                             </div>
                         </div>
                         <div id="author"> 

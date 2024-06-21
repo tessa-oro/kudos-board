@@ -37,6 +37,7 @@
 
 #modalContent {
     display: block;
+    width: 400px;
 }
 
 form {
