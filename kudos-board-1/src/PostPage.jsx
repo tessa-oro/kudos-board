@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import "./PostPage.css";
 import Post from "./Post";
 import PostModal from "./PostModal";
+import { Link } from 'react-router-dom';
 
 const PostPage = ({ cardId }) => {
     const [kudoPosts, setKudoPosts] = useState([]);
@@ -94,9 +95,36 @@ const PostPage = ({ cardId }) => {
         });
     }
 
+    const upVote = (num) => {
+        fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosPosts/upvote/${num}`,
+            {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        )
+        .then(response => {
+             if (!response.ok) {
+                 throw new Error(`HTTP error! status: ${response.status}`);
+             } else {
+                return response.json();
+              } 
+        })
+        .then(data => {
+            fetchPosts();
+        })
+        .catch(error => {
+            console.error('Error fetching post', error);
+        });
+    }
+
     return (
         <div id="postPage" >
             <p>Posts</p>
+            <Link to="/">
+                <p>go back</p>
+            </Link>
             <button onClick={() => changeModalDisplay()}>create post</button>
             { showModal ? (
                 <PostModal closeModal={() => changeModalDisplay()} createPost={(formInput) => createPost(formInput)} />
@@ -107,7 +135,8 @@ const PostPage = ({ cardId }) => {
                     {kudoPosts.map(post => (
                         <Post message={post.message} author={post.author} votes={post.votes}
                         card={post.cardId} title={post.title}
-                        deleteCard={() => deleteThisPost(post.id)} />)
+                        deleteCard={() => deleteThisPost(post.id)}
+                        upVote={() => upVote(post.id)} />)
                     )}
                 </div>
             </div>
