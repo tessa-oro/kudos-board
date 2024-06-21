@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import "./Post.css";
 
-const Post = ({message, gif, author, votes}) => {
+const Post = ({message, gif, author, votes, card}) => {
 
     return (
         <div id="post" >

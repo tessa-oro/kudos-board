@@ -5,9 +5,10 @@ import ButtonSection from "./ButtonSection";
 import KudosCard from "./KudosCard";
 import Modal from "./Modal";
 
-function KudosBoard() {
+function KudosBoard( {passCardId} ) {
     const [showModal, setShowModal] = useState(false);
     const [kudoCards, setKudoCards] = useState([]);
+    const [clickedId, setClickedId] = useState(0);
     const [randImg, setRandImg] = useState(1);
 
     useEffect(() => {
@@ -100,6 +101,7 @@ function KudosBoard() {
                 <div id="cardSection">
                     {kudoCards.map(card => (
                         <KudosCard title={card.title} category={card.category} num={card.id} 
+                        passCardId={passCardId}
                         /*{ deleteCard={(num) => deleteThisCard(num)} } *//>)
                     )}
                 </div>

@@ -3,10 +3,16 @@ import PostPage from "./PostPage"
 import Footer from './Footer'
 import KudosHeader from './KudosHeader'
 import KudosBoard from './KudosBoard'
-import KudosCard from './KudosCard'
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
+  const [postNum, setPostNum] = useState(0);
+
+  const setCardId = (num) => {
+    setPostNum(num);
+    console.log(num);
+  }
 
   return (
     <Router>
@@ -14,10 +20,10 @@ function App() {
         <KudosHeader />
         <Switch>
           <Route exact path="/">
-            <KudosBoard />
+            <KudosBoard passCardId={setCardId}/>
           </Route>
           <Route path="/posts">
-            <PostPage />
+            <PostPage cardId={postNum} />
           </Route>
         </Switch>
         <Footer />

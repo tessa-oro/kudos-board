@@ -16,7 +16,7 @@ const Modal = ({ closeModal, createBoard }) => {
                         <div id="dCategory"> 
                             <label>Category:</label>
                             <select id="category" name="category">
-                                <option value="recent">Recent</option>
+                                <option value="">select</option>
                                 <option value="celebration">Celebration</option>
                                 <option value="thankYou">Thank You</option>
                                 <option value="Inspiration">Inspiration</option>
