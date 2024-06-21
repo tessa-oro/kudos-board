@@ -66,33 +66,61 @@ function KudosBoard( {passCardId} ) {
         });
     }
 
-    // const deleteThisCard = (num) => {
-    //     fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosCards/${num}`,
-    //         {
-    //             method: "DELETE",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //         }
-    //     )
-    //     .then(response => {
-    //          if (!response.ok) {
-    //              throw new Error(`HTTP error! status: ${response.status}`);
-    //          } else {
-    //             return response.json();
-    //           } 
-    //     })
-    //     .then(data => {
-    //         fetchCards();
-    //     })
-    //     .catch(error => {
-    //         console.error('Error fetching boards', error);
-    //     });
-    //  }
+    const handleSort = (e) => {
+        const selectedSort = e.target.value;
+        console.log(selectedSort);
+        if (selectedSort === 'all') {
+            fetchCards();
+        } else {
+            try {
+                fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosCards/show/${selectedSort}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    } else {
+                        return response.json();
+                    } 
+                })
+                .then(data => {
+                    console.log(data);
+                    setKudoCards(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching boards', error);
+                });
+            } catch {
+                console.error('Did not pick valid sort option');
+            }
+        }
+    }
+
+    const deleteThisCard = (num) => {
+        fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosCards/${num}/delete`,
+            {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        )
+        .then(response => {
+             if (!response.ok) {
+                 throw new Error(`HTTP error! status: ${response.status}`);
+             } else {
+                return response.json();
+              } 
+        })
+        .then(data => {
+            fetchCards();
+        })
+        .catch(error => {
+            console.error('Error fetching boards', error);
+        });
+     }
 
     return (
         <div>
-            <ButtonSection openCreate={() => changeModalDisplay()}/>
+            <ButtonSection openCreate={() => changeModalDisplay()} handleSort={handleSort}/>
             { showModal ? (
                 <Modal closeModal={() => changeModalDisplay()} createBoard={(formInput) => createCard(formInput)}/>
             ) : (<></>)
@@ -102,7 +130,7 @@ function KudosBoard( {passCardId} ) {
                     {kudoCards.map(card => (
                         <KudosCard title={card.title} category={card.category} num={card.id} 
                         passCardId={passCardId}
-                        /*{ deleteCard={(num) => deleteThisCard(num)} } *//>)
+                        deleteCard={() => deleteThisCard(card.id)} />)
                     )}
                 </div>
             </div>

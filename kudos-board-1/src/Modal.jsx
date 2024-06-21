@@ -19,7 +19,7 @@ const Modal = ({ closeModal, createBoard }) => {
                                 <option value="">select</option>
                                 <option value="celebration">Celebration</option>
                                 <option value="thankYou">Thank You</option>
-                                <option value="Inspiration">Inspiration</option>
+                                <option value="inspiration">Inspiration</option>
                             </select>
                         </div>
                         <div id="dAuthor"> 

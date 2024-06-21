@@ -1,7 +1,7 @@
 import React from 'react';
 import "./ButtonSection.css"
 
-function ButtonSection( {openCreate} ) {
+function ButtonSection( {openCreate, handleSort} ) {
     return (
         <div>
             <div id="searchSection">
@@ -14,7 +14,7 @@ function ButtonSection( {openCreate} ) {
                 <span id="sortSection">
                     <div id="sortBox">
                         <label id="sortLabel">View:</label>
-                        <select name="sort" id="sortOption">
+                        <select onChange={(e) => handleSort(e)} name="sort" id="sortOption">
                             <option value="all">All</option>
                             <option value="recent">Recent</option>
                             <option value="celebration">Celebration</option>
