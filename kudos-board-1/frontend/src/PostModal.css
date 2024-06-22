@@ -101,3 +101,7 @@ input, #message, button {
 #gifItem:hover {
     transform: translate3d(0, -2px, 0) scale(1.06);
 }
+
+#pPickedURL {
+    width: fit-content;
+}

@@ -78,7 +78,7 @@ const PostModal = ({ closeModal, createPost }) => {
                                  )}
                             </div>
                             <div>
-                                <p>GIF URL: {pickedURL}</p>
+                                <p id="pPickedURL">GIF URL: {pickedURL}</p>
                                 <input type="hidden" id="pickedURL" name="pickedURL" value={pickedURL}></input>
                             </div>
                         </div>
