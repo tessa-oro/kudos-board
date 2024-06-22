@@ -8,8 +8,6 @@ import Modal from "./Modal";
 function KudosBoard( {passCardId} ) {
     const [showModal, setShowModal] = useState(false);
     const [kudoCards, setKudoCards] = useState([]);
-    const [clickedId, setClickedId] = useState(0);
-    const [randImg, setRandImg] = useState(1);
 
     useEffect(() => {
         fetchCards();

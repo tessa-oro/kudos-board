@@ -137,7 +137,7 @@ const PostPage = ({ cardId }) => {
                 <div id="postSection">
                     {kudoPosts.map(post => (
                         <Post message={post.message} author={post.author} votes={post.votes}
-                        card={post.cardId} title={post.title} gif={post.gif}
+                        card={post.cardId} title={post.title} gif={post.gif} postId={post.id}
                         deleteCard={() => deleteThisPost(post.id)}
                         upVote={() => upVote(post.id)} />)
                     )}
