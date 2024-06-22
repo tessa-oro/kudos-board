@@ -11,6 +11,9 @@ const Post = ({title, message, gif, author, votes, deleteCard, upVote, postId}) 
         fetchComments();
     }, []);
 
+    /*
+    Fetches all comments belonging to post using GET
+    */
     const fetchComments = () => {
         fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/comments/${postId}`)
         .then(response => {
@@ -21,7 +24,6 @@ const Post = ({title, message, gif, author, votes, deleteCard, upVote, postId}) 
               } 
         })
         .then(data => {
-            console.log(data);
             setComments(data);
         })
         .catch(error => {
@@ -29,6 +31,9 @@ const Post = ({title, message, gif, author, votes, deleteCard, upVote, postId}) 
         });
     }
 
+    /*
+    Adds a comment to array of comments belonging to post using POST
+    */
     const addComment = (e) => {
         e.preventDefault();
         let newComment = e.target.elements.toComment.value;
@@ -68,7 +73,7 @@ const Post = ({title, message, gif, author, votes, deleteCard, upVote, postId}) 
             <button id="upvote" onClick={upVote}>{votes} upvote</button>
             <button id="deletePost" onClick={deleteCard}>delete</button>
             <form onSubmit={(e) => addComment(e)}>
-                <input id="toComment" type="text" name="toComment"></input>
+                <input id="toComment" type="text" name="toComment" placeholder="add a comment..."></input>
             </form>
             <div id="comments">
                 {comments.map(comment => (

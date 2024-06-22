@@ -13,6 +13,9 @@ const PostPage = ({ cardId }) => {
         fetchPosts();
     }, []);
 
+    /*
+    Fetches all posts corresponding to clicked card using GET
+    */
     const fetchPosts = async () => {
         fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosPosts/${cardId}`)
         .then(response => {
@@ -23,8 +26,6 @@ const PostPage = ({ cardId }) => {
               } 
         })
         .then(data => {
-            console.log(data);
-            console.log(cardId);
             setKudoPosts(data);
         })
         .catch(error => {
@@ -32,16 +33,18 @@ const PostPage = ({ cardId }) => {
         });
     }
 
+    /*
+    Opens and closes modal to create post
+    */
     const changeModalDisplay = () => {
         setShowModal(!showModal);
     }
 
+    /*
+    Creates a new post with form input using POST
+    */
     const createPost = async (formInput) => {
         formInput.preventDefault();
-        console.log(formInput.target.elements.title.value)
-        console.log(formInput.target.elements.message.value);
-        console.log(formInput.target.elements.author.value);
-        console.log(formInput.target.elements.pickedURL.value);
         const formData = {
             title: `${formInput.target.elements.title.value}`,
             message: `${formInput.target.elements.message.value}`,
@@ -65,7 +68,6 @@ const PostPage = ({ cardId }) => {
               } 
         })
         .then(data => {
-            console.log(cardId);
             fetchPosts();
         })
         .catch(error => {
@@ -74,6 +76,9 @@ const PostPage = ({ cardId }) => {
         changeModalDisplay();
     }
 
+    /*
+    Deletes selected post using DELETE
+    */
     const deleteThisPost = (num) => {
         fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosPosts/${num}/delete`,
             {
@@ -98,6 +103,9 @@ const PostPage = ({ cardId }) => {
         });
     }
 
+    /*
+    Updates number of upvotes on a post using PATCH
+    */
     const upVote = (num) => {
         fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosPosts/upvote/${num}`,
             {

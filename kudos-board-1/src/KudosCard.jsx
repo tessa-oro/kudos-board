@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 
 const KudosCard = ({title, category, num, deleteCard, passCardId}) => {
 
+    /*
+    Passes the id of the clicked card in order to show corresponding posts
+    */
     const handleSwitch = () => {
         passCardId(num);
     }

@@ -11,6 +11,9 @@ const PostModal = ({ closeModal, createPost }) => {
         fetchSearch;
     }, []);
 
+    /*
+    Fetch first 6 search giphy search results using GIPHY API
+    */
     const fetchSearch = () => {
         let url = `https://api.giphy.com/v1/gifs/search?api_key=GadzqBwyej5EjOVt6ryGmgYENTbW6mls&q=${searchGIF}&limit=6&offset=0&rating=g&lang=en&bundle=messaging_non_clips`;
         fetch(url)
@@ -19,19 +22,25 @@ const PostModal = ({ closeModal, createPost }) => {
             .catch(err => console.error(err));
     }
 
-    console.log(gifOptions);
-
+    /*
+    Set search term for search url to what user enters to search bar
+    */
     const handleSearch = (e) => {
         e.preventDefault();
-        console.log(e.target.value);
         setSearchGIF(e.target.value);
     }
 
+    /*
+    Fetches search when search button is clicked
+    */
     const goSearch = (e) => {
         e.preventDefault();
         fetchSearch();
     }
 
+    /*
+    Sets the selected gif url to correspond to gif that user clicked
+    */
     const selectGIF = (e, selectedURL) => {
         e.preventDefault();
         setPickedURL(selectedURL);
@@ -58,7 +67,7 @@ const PostModal = ({ closeModal, createPost }) => {
                         <div id="gifSearch" onSubmit={(e) => goSearch(e)}>
                             <label>Search GIFS:</label>
                             <input type="text" id="searchFor" name="searchFor"
-                            onChange={handleSearch} value={searchGIF}></input>
+                            onChange={handleSearch} value={searchGIF} required></input>
                             <button onClick={(e) => goSearch(e)}>search</button>
                         </div>
                         <div id="gifOptions">

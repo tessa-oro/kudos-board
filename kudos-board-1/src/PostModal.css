@@ -69,6 +69,7 @@ form {
 
 #gifSearch {
     padding-top: 25px;
+    padding-bottom: 10px;
 }
 
 #submitPostDiv {
@@ -93,4 +94,10 @@ input, #message, button {
 
 #gifItem {
     margin: 5px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+#gifItem:hover {
+    transform: translate3d(0, -2px, 0) scale(1.06);
 }

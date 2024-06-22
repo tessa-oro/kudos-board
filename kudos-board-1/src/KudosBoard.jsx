@@ -13,6 +13,9 @@ function KudosBoard( {passCardId} ) {
         fetchCards();
     }, []);
 
+    /*
+    Fetches cards using GET
+    */
     const fetchCards = () => {
         fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosCards`)
         .then(response => {
@@ -23,7 +26,6 @@ function KudosBoard( {passCardId} ) {
               } 
         })
         .then(data => {
-            console.log(data);
             setKudoCards(data);
         })
         .catch(error => {
@@ -31,10 +33,16 @@ function KudosBoard( {passCardId} ) {
         });
     }
 
+    /*
+    Opens and closes modal to create card
+    */
     const changeModalDisplay = () => {
         setShowModal(!showModal);
     }
 
+    /*
+    Creates a new card with form input using POST
+    */
     const createCard = (formInput) => {
         fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosCards`,
             {
@@ -64,9 +72,11 @@ function KudosBoard( {passCardId} ) {
         });
     }
 
+    /*
+    Displays cards depending on which sort was selected using GET
+    */
     const handleSort = (e) => {
         const selectedSort = e.target.value;
-        console.log(selectedSort);
         if (selectedSort === 'all') {
             fetchCards();
         } else {
@@ -80,7 +90,6 @@ function KudosBoard( {passCardId} ) {
                     } 
                 })
                 .then(data => {
-                    console.log(data);
                     setKudoCards(data);
                 })
                 .catch(error => {
@@ -92,10 +101,12 @@ function KudosBoard( {passCardId} ) {
         }
     }
 
+    /*
+    Displays cards that user is searching for using GET
+    */
     const handleSearch = (e) => {
         e.preventDefault();
         const searchingFor = e.target.value;
-        console.log(searchingFor);
         if (searchingFor === "") {
             fetchCards();
         } else {
@@ -108,7 +119,6 @@ function KudosBoard( {passCardId} ) {
                 } 
             })
             .then(data => {
-                console.log(data);
                 setKudoCards(data);
             })
             .catch(error => {
@@ -117,10 +127,16 @@ function KudosBoard( {passCardId} ) {
         }
     }
 
+    /*
+    Refetches all cards when user clears their search
+    */
     const clearSearch = () => {
         fetchCards();
     }
 
+    /*
+    Deletes card using DELETE
+    */
     const deleteThisCard = (num) => {
         fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/kudosCards/${num}/delete`,
             {
@@ -146,7 +162,7 @@ function KudosBoard( {passCardId} ) {
     }
 
     return (
-        <div>
+        <div id="boardBody">
             <ButtonSection openCreate={() => changeModalDisplay()} handleSort={handleSort} handleSearch={handleSearch}
             clearSearch={clearSearch}/>
             { showModal ? (

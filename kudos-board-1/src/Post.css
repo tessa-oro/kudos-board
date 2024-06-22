@@ -8,12 +8,6 @@
     transition: 0.5s ease;
 }
 
-#post:hover {
-    box-shadow: 5px 5px 10px rgba(161, 0, 202, 0.424);
-    transform: translate3d(0, -2px, 0) scale(1.04);
-    background-color: rgb(247, 220, 255);
-}
-
 #posts {
     margin-top: 30px;
 }
@@ -39,4 +33,9 @@
 
 #upvote:hover, #deletePost:hover {
     background-color: rgb(232, 156, 255);
+}
+
+#toComment {
+    margin-top: 25px;
+    border-color: rgb(174, 43, 226);
 }

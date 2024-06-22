@@ -3,7 +3,7 @@ import "./Comments.css"
 
 function Comments( { content } ) {
     return (
-        <div>
+        <div id="comment">
             <p>{content}</p>
         </div>
     );

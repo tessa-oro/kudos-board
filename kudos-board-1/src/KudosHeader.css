@@ -9,3 +9,9 @@ h1 {
     text-align: center;
     text-shadow: rgb(255, 191, 230) 1px 0 10px;
 }
+
+header {
+    padding: 1px;
+    margin-bottom: 30px;
+    background-color: #ffdef2;
+}

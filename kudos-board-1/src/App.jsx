@@ -9,9 +9,11 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 function App() {
   const [postNum, setPostNum] = useState(0);
 
+  /*
+  Sets post number to the correct card id in order to fetch the posts corresonding to the card
+  */
   const setCardId = (num) => {
     setPostNum(num);
-    console.log(num);
   }
 
   return (
