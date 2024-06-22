@@ -1,21 +1,22 @@
-#createModal {
+#createModalPost {
     z-index: 1000;
-    justify-content: center;
+    justify-content: left;
     display: flex;
     position: fixed;
-    width: 70%;
-    height: 30%;
+    width: 60%;
+    height: 60%;
     overflow: auto;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(255, 184, 228, 0.876);
     box-shadow: 0px 0px 10px rgba(72, 72, 72, 0.5);
-    border-radius: 4%;
+    border-radius: 10%;
     padding-top: 20px;
     padding-bottom: 60px;
-    padding-left: 30px;
+    padding-left: 100px;
     padding-right: 30px;
+    border-color: rgba(255, 184, 228, 0.876);
 }
 
 #close {
@@ -37,29 +38,41 @@
 
 #modalContent {
     display: block;
-    width: 400px;
+    width: 600px;
 }
 
 form {
     display: block;
+    text-align: left;
 }
 
 #title {
-    display: block;
+    display: inline-block;
     padding: 10px;
     color: black;
 }
 
 #message {
-    display: block;
+    display: inline-block;
     padding: 10px;
     color: black;
+    justify-content:  left;
 }
 
+
 #author {
-    display: block;
+    display: inline-block;
     padding: 10px;
     color: black;
+    margin-bottom: 10px;
+}
+
+#gifSearch {
+    padding-top: 25px;
+}
+
+#submitPostDiv {
+    text-align: center;
 }
 
 h3 {
@@ -78,12 +91,6 @@ input, #message, button {
     border-color: rgb(255, 0, 106);
 }
 
-button {
-    color: white;
-    background-color: rgb(254, 133, 180);
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: rgba(255, 183, 225, 0.781);
+#gifItem {
+    margin: 5px;
 }

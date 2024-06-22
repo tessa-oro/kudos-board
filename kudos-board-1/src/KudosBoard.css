@@ -2,16 +2,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    min-width: 10px;
     margin-bottom: 50px;
 }
 
 #kudosCover {
     display: flex;
-}
-
-#kudos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }

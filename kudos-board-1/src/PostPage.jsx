@@ -124,9 +124,9 @@ const PostPage = ({ cardId }) => {
 
     return (
         <div id="postPage" >
-            <p>Posts</p>
+            <p id="postTitle">Posts</p>
             <Link to="/">
-                <p>go back</p>
+                <button id="goBack">go back</button>
             </Link>
             <button onClick={() => changeModalDisplay()}>create post</button>
             { showModal ? (

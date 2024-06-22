@@ -25,6 +25,8 @@ const Modal = ({ closeModal, createBoard }) => {
                         <div id="dAuthor"> 
                             <label>Author:</label>
                             <input type="text" id="author" name="author"></input>
+                        </div>
+                        <div>
                             <button type="submit" value="Submit">Create Board</button>
                         </div>
                     </form>

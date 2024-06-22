@@ -1,0 +1,42 @@
+#post {
+    padding: 7px;
+    background-color: rgb(240, 191, 255);
+    margin: 10px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 3px 3px 8px rgba(161, 0, 202, 0.424);
+    transition: 0.5s ease;
+}
+
+#post:hover {
+    box-shadow: 5px 5px 10px rgba(161, 0, 202, 0.424);
+    transform: translate3d(0, -2px, 0) scale(1.04);
+    background-color: rgb(247, 220, 255);
+}
+
+#posts {
+    margin-top: 30px;
+}
+
+#postCardTitle {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 0px;
+}
+
+#bMessage {
+    margin-top: 5px;
+}
+
+#upvote, #deletePost {
+    color: white;
+    background-color: rgb(215, 85, 255);
+    cursor: pointer;
+    border-color: rgb(180, 43, 226);
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+#upvote:hover, #deletePost:hover {
+    background-color: rgb(232, 156, 255);
+}
