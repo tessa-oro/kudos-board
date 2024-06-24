@@ -1,6 +1,6 @@
 Submitted by: **Tessa Orozco**
 
-Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): 
 
 ### Application Features
 
@@ -39,7 +39,7 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 ### Walkthrough Video
 
-`TODO://` https://www.loom.com/share/b51adccd1bcf49a7922c088d11fc6bbb?sid=6b84996c-804e-45a0-b725-b0659b2aea47
+`TODO://` https://www.loom.com/share/201beaae727045168d585901bb79510c?sid=61b88ab7-c44b-4120-ac86-5d0b00db1236
 
 `ADD_EMBEDDED_CODE_HERE`
 
